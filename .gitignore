@@ -2,6 +2,10 @@ ttemplate for web projects
 
 # binaries
 krtfs
+kertish-data
+kertish-head
+kertish-manager
+krtadm
 
 # folders to ignore virtual env, vscode etc
 env/ 
