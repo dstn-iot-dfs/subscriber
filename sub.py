@@ -1,5 +1,5 @@
 import paho.mqtt.client
-import json, requests,time,threading,os
+import json, requests,time,threading,os,shutil
 from config import config
 from queue import Queue
 
@@ -38,7 +38,8 @@ def poll_file_q(lock, q):
 
 		# call write function
 		# write_krt(fname)
-
+		if os.path.exists(fname):
+			shutil.copyfile(fname,'cp_'+fname)
 		# yeet the file
 		if os.path.exists(fname):
 			os.remove(fname)
