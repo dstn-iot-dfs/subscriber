@@ -37,3 +37,6 @@ __pycache__/
 
 #logs
 *.log
+
+#mac-specific
+.DS_Store
