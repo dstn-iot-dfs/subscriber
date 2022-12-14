@@ -1,0 +1,31 @@
+#template for web projects
+
+# folders to ignore virtual env, vscode etc
+env/ 
+ignore/
+ignore/* 
+.vscode/
+*/__pycache__/
+*/__pycache__/*
+*/migrations/
+*/migrations/*
+# /sample-data/raw/
+# /sample-data/raw/*
+
+# ingore secret config such as secret key. create folder in server
+config_files/
+config_files/*
+# ignore static files -> run python manage.py collectstatic to generate
+static/
+static/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyc
+
+# C extensions
+*.so
+
+#logs
+*.log
