@@ -6,7 +6,8 @@ krtfs
 # folders to ignore virtual env, vscode etc
 env/ 
 ignore/
-ignore/* 
+ignore/*
+*.txt 
 .vscode/
 */__pycache__/
 */__pycache__/*
