@@ -25,12 +25,29 @@ def on_message(client,userdata,message):
 		q.get()
 	q.put(fname)
 	lock.release()
-	
-	# call write
-	time.sleep(50)
-	# yeet file once write is dones
-	if os.path.exists(fname):
-		os.remove(fname)
+
+def poll_file_q(lock, q):
+	while True:
+		lock.acquire()
+		if not q.empty():
+			fname = q.get()
+		else: # nothing to publish
+			lock.release()
+			continue
+		lock.release()
+
+		# call write function
+		# write_krt(fname)
+
+		# yeet the file
+		if os.path.exists(fname):
+			os.remove(fname)
+
+		time.sleep(config.img_xmit_time)
+
+load_data_thr = threading.Thread(target=poll_file_q, args=(lock,q))
+load_data_thr.start()
+
 
 client = paho.mqtt.client.Client(client_id=config.mqtt_client_name,clean_session=False)
 client.connect(host=config.mqtt_borker_ip, port=1883)

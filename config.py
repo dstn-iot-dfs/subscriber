@@ -10,6 +10,6 @@ class config():
 	queue_size_limit = 5
 	cutoff_strength = 60
 	max_timeouts = 1000
-	img_xmit_time = 1 #time after which xmit in s
+	img_xmit_time = 0.5 #time after which xmit in s
 	img_gen_time = 5
 
