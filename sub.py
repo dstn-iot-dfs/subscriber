@@ -2,7 +2,7 @@ import paho.mqtt.client
 import json, requests,time,threading,os,shutil
 from config import config
 from queue import Queue
-
+from wrappers import write_to_kertish
 # Global vars
 q = Queue(maxsize=config.queue_size_limit)
 lock = threading.Lock()
@@ -37,9 +37,7 @@ def poll_file_q(lock, q):
 		lock.release()
 
 		# call write function
-		# write_krt(fname)
-		if os.path.exists(fname):
-			shutil.copyfile(fname,'cp_'+fname)
+		write_to_kertish(fname,fname)
 		# yeet the file
 		if os.path.exists(fname):
 			os.remove(fname)
