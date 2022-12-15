@@ -12,4 +12,4 @@ class config():
 	max_timeouts = 1000
 	img_xmit_time = 0.5 #time after which xmit in s
 	img_gen_time = 5
-	kertish_ip = "10.60.38.105:4000"
+	kertish_ip = "10.60.33.62:4000"
