@@ -1,5 +1,5 @@
 import paho.mqtt.client
-import json, requests,time,threading,os,shutil
+import json, requests,time,threading,os,shutil,zstd
 from config import config
 from queue import Queue
 from wrappers import write_to_kertish
@@ -13,8 +13,11 @@ def on_message(client,userdata,message):
 	print(message.payload[:120])
 	fname = str(obj['ts']) + '_' + str(obj['id'])
 	contents = obj['data']
+	print(len(contents))
+	contents = zstd.compress(bytes(contents,'utf-8'),4)
+	# contents = contents.decode()
 	try:
-		fh = open(fname,'w')
+		fh = open(fname,'wb')
 		print(fh.write(contents), 'bytes written')
 		fh.flush()
 		fh.close()
